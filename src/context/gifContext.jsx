@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { GiphyFetch } from "@giphy/js-fetch-api";
 import { createContext, useContext, useState } from "react";
