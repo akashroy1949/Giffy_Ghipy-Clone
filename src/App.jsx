@@ -6,6 +6,7 @@ import SearchPage from "./pages/searchPage";
 import SingleGifPage from "./pages/singleGifPage";
 import Favorites from "./pages/favorites";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import GifProvider from "./context/gifContext";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <GifProvider>
+      <RouterProvider router={router} />;
+    </GifProvider>
+  );
 }
 
 export default App;
