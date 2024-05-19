@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -8,8 +9,10 @@ const Header = () => {
   const [categories, setCategories] = useState();
   const [showCategories, setShowCategories] = useState();
 
+  // receiving giphyEndpoint and other required data through context
   const { gifEndpoint, filter, setFilter, favorites } = GifState();
 
+  // fetching Gif Categories
   const fetchGifCategories = async () => {
     const { data } = await gifEndpoint.categories();
     setCategories(data);
@@ -17,13 +20,17 @@ const Header = () => {
 
   useEffect(() => {
     fetchGifCategories();
-  }, []);
+  }, [fetchGifCategories]);
 
   return (
     <nav>
       <div className="relative flex gap-4 justify-between items-center mb-2">
         {/* Logo & Title */}
-        <Link to="/" className="flex gap-2">
+        <Link
+          to={"/"}
+          className="flex gap-2"
+          onClick={() => setShowCategories(false)}
+        >
           <img
             src="https://media3.giphy.com/media/l3vR16pONsV8cKkWk/200w.gif?cid=6c09b95250rkwqe202a5xaq59gtohuq4fric3a6bsttwh8as&ep=v1_gifs_search&rid=200w.gif&ct=g"
             alt="Giphy Clone Logo"
