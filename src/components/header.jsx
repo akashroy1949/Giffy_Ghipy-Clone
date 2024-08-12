@@ -10,7 +10,7 @@ const Header = () => {
   const [showCategories, setShowCategories] = useState();
 
   // receiving giphyEndpoint and other required data through context
-  const { gifEndpoint, filter, setFilter, favorites } = GifState();
+  const { gifEndpoint, filters, setFilters, favorites } = GifState();
 
   // fetching Gif Categories
   const fetchGifCategories = async () => {
@@ -91,6 +91,7 @@ const Header = () => {
                     key={category.name}
                     to={`/${category.name_encoded}`}
                     className="font-medium opacity-80"
+                    onClick={() => setShowCategories(false)}
                   >
                     {category.name}
                   </Link>
@@ -102,6 +103,8 @@ const Header = () => {
       </div>
 
       {/* Search */}
+      {/* Gif Search */}
+      
     </nav>
   );
 };

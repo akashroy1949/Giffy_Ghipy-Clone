@@ -24,12 +24,12 @@ const Home = () => {
       {/* Banner */}
       <img
         src="https://media.giphy.com/headers/2022-04-27-32-1651084365/AAPIHM_BANNER_HP.gif"
-        alt="Giphy Banner Image"
+        alt="Giphy Banner"
         className="mt-2 rounded w-full"
       />
 
       {/* Filter Button Gifs */}
-      <FilterGifs/>
+      <FilterGifs showTrending/>
 
       {/* Render Gifs */}
       <div className="mt-2 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-2">
