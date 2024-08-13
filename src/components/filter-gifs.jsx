@@ -21,7 +21,7 @@ const filtersJSON = [
 ];
 
 const FilterGifs = ({ alignLeft = false, showTrending = false }) => {
-  const { filters, setFilters } = GifState();
+  const { filter, setFilter } = GifState();
 
   return (
     <div
@@ -44,15 +44,16 @@ const FilterGifs = ({ alignLeft = false, showTrending = false }) => {
       <div className="flex min-w-80 rounded-full bg-gray-800">
         {filtersJSON.map((i) => {
           return (
-            <span
-              onClick={() => setFilters(i.value)}
+            <button
+              onClick={() => setFilter(i.value)}
+              tabIndex={0}
               className={`${
-                filters === i.value ? i.background : ""
+                filter === i.value ? i.background : ""
               } font-semibold py-2 w-1/3 text-center rounded-full cursor-pointer`}
               key={i.value}
             >
               {i.title}
-            </span>
+            </button>
           );
         })}
       </div>

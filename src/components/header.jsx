@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import { GifState } from "../context/gifContext";
+import GifSearch from "./gif-search";
 
 const Header = () => {
   const [categories, setCategories] = useState();
   const [showCategories, setShowCategories] = useState();
 
   // receiving giphyEndpoint and other required data through context
-  const { gifEndpoint, filters, setFilters, favorites } = GifState();
+  const { gifEndpoint, favorites } = GifState();
 
   // fetching Gif Categories
   const fetchGifCategories = async () => {
@@ -103,8 +104,7 @@ const Header = () => {
       </div>
 
       {/* Search */}
-      {/* Gif Search */}
-      
+      <GifSearch />
     </nav>
   );
 };
