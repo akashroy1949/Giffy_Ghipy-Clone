@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const Gif = ({ gif, hover = true }) => {
@@ -26,6 +27,25 @@ const Gif = ({ gif, hover = true }) => {
       </div>
     </Link>
   );
+};
+
+//Add proptypes validation
+Gif.propTypes = {
+  gif: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    images: PropTypes.shape({
+      fixed_width: PropTypes.shape({
+        webp: PropTypes.string.isRequired,
+      }),
+    }),
+    user: PropTypes.shape({
+      avatar_url: PropTypes.string.isRequired,
+      display_name: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  hover: PropTypes.bool.isRequired,
 };
 
 export default Gif;

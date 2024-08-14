@@ -7,3 +7,19 @@
     @apply bg-gradient-to-r from-teal-600 via-blue-600 to-pink-600;
   }
 }
+
+.loading-icon-spin {
+  margin: 9rem;
+  font-size: 4rem;
+  animation: animate 2s infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(720deg);
+  }
+}
