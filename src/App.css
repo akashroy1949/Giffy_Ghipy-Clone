@@ -8,6 +8,14 @@
   }
 }
 
+.faded-text {
+  @apply font-bold text-sm text-gray-400;
+}
+
+.divider {
+  @apply w-full h-0.5 my-6 bg-gray-800;
+}
+
 .loading-icon-spin {
   margin: 9rem;
   font-size: 4rem;
