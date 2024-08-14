@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { GifState } from "../context/gifContext";
 import Gif from "../components/gif";
 import FilterGifs from "../components/filter-gifs";
@@ -6,18 +6,18 @@ import FilterGifs from "../components/filter-gifs";
 const Home = () => {
   const { gifEndpoint, filter, gifs, setGifs } = GifState();
 
-  const fetchTrendingGifs = async () => {
+  const fetchTrendingGifs = useCallback(async () => {
     const { data } = await gifEndpoint.trending({
       limit: 20,
       type: filter,
       rating: "g",
     });
     setGifs(data);
-  };
+  }, [filter, gifEndpoint, setGifs]);
 
   useEffect(() => {
     fetchTrendingGifs();
-  }, [filter]);
+  }, [fetchTrendingGifs]);
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Home = () => {
       />
 
       {/* Filter Button Gifs */}
-      <FilterGifs showTrending/>
+      <FilterGifs showTrending />
 
       {/* Render Gifs */}
       <div className="mt-2 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-2">
