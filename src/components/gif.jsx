@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Gif = ({ gif, hover = true }) => {
   return (
-    <Link to={`/${gif?.type}/${gif?.slug}`}>
+    <Link to={`/${gif?.type}s/${gif?.slug}`}>
       <div className="mb-2 relative w-full cursor-pointer group aspect-video">
         {/* Gif Image */}
         <img
@@ -43,9 +43,9 @@ Gif.propTypes = {
     user: PropTypes.shape({
       avatar_url: PropTypes.string.isRequired,
       display_name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
   }).isRequired,
-  hover: PropTypes.bool.isRequired,
+  hover: PropTypes.bool,
 };
 
 export default Gif;
