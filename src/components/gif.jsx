@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Gif = ({ gif, hover = true }) => {
   return (
-    <Link to={`${gif?.type}/${gif?.slug}`}>
+    <Link to={`/${gif?.type}/${gif?.slug}`}>
       <div className="mb-2 relative w-full cursor-pointer group aspect-video">
         {/* Gif Image */}
         <img

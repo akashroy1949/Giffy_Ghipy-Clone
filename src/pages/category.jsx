@@ -28,6 +28,23 @@ const Category = () => {
         <FollowOn />
         <div className="divider" />
       </div>
+
+      <div>
+        <h2 className="text-4xl pb-1 font-extrabold capitalize">
+          {catergory.split("-").join(" & ")} GIFs
+        </h2>
+        <h2 className="text-lg pb-3  font-bold text-gray-400 hover:text-gray-50 cursor-pointer">
+          @{catergory}
+        </h2>
+
+        {results.length > 0 && (
+          <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-2">
+            {results?.slice(1)?.map((gif) => (
+              <Gif key={gif?.id} gif={gif} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
