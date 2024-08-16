@@ -14,6 +14,12 @@ const GifSearch = () => {
     navigate(`/search/${query}`);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      searchGifs();
+    }
+  };
+
   return (
     <div className="flex relative">
       {/* Search Box */}
@@ -21,6 +27,7 @@ const GifSearch = () => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyPress}
         placeholder="Search all the Gifs and Stickers"
         className="w-full pl-4 py-5 text-xl text-black rounded-l border border-gray-300 outline-none"
       />

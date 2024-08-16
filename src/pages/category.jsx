@@ -25,7 +25,7 @@ const Category = () => {
         <span className="text-gray-400 text-sm pt-2">
           Don&apos;t tell it to me, Gif it to me
         </span>
-        <FollowOn />
+        <FollowOn socialUrls={results[0]?.user} />
         <div className="divider" />
       </div>
 
