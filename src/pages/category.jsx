@@ -3,22 +3,33 @@ import { useParams } from "react-router-dom";
 import { GifState } from "../context/gifContext";
 import Gif from "../components/gif";
 import { FollowOn } from "../components/follow-on";
+import { Loader } from "../components/loader";
 
 const Category = () => {
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { gifEndpoint } = GifState();
   const { catergory } = useParams();
 
   const fetchCategoryResults = useCallback(async () => {
-    const { data } = await gifEndpoint.gifs(catergory, catergory);
-    setResults(data);
+    setLoading(true);
+    try {
+      const { data } = await gifEndpoint.gifs(catergory, catergory);
+      setResults(data);
+      setLoading(!data);
+    } catch (error) {
+      console.error("Failed to fetch category results:", error);
+      setLoading(false);
+    }
   }, [catergory, gifEndpoint]);
 
   useEffect(() => {
     fetchCategoryResults();
   }, [fetchCategoryResults]);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="flex flex-col sm:flex-row gap-5 my-4">
       <div className="w-full sm:w-72">
         {results.length > 0 && <Gif gif={results[0]} hover={false} />}
